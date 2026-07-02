@@ -183,7 +183,10 @@
         function pop__2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['дата'] !== null ? autolinker.link(String(feature.properties['дата']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th><b>Район, в който въстанието придобива масов характер</b></th>\
+                    </tr>\
+                    <tr>\
+                        <td>Част от територията на Четвъртия революционен окръг (Панагюрски), в която след избухването на въстанието в Копривщица на 20 април (2 май) 1876 г. се вдигат на борба и околните градове и села — сред тях Панагюрище, Перущица, Батак, Брацигово, Клисура и Стрелча.</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
