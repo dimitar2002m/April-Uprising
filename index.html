@@ -350,7 +350,10 @@
         function pop__6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Регио'] !== null ? autolinker.link(String(feature.properties['Регио']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th><b>Старозагорско въстание</b></th>\
+                    </tr>\
+                    <tr>\
+                        <td>Въстанието избухва в нощта на 16 срещу 17 (28 срещу 29) септември 1875 г., организирано от Българския революционен централен комитет под ръководството на Стефан Стамболов. Обхваща старозагорския край, но е потушено бързо от османските власти, тъй като планираното общо надигане в цялата страна не успява да се осъществи. Въпреки неуспеха, то дава ценен организационен опит и подготвя почвата за Априлското въстание през 1876 г.</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -407,6 +410,12 @@
         map.addLayer(layer__6);
         function pop__7(feature, layer) {
             var popupContent = '<table>\
+                    <tr>\
+                        <th><b>Действия на четите по време на Старозагорското въстание</b></th>\
+                    </tr>\
+                    <tr>\
+                        <td>Пътят, изминат от въстаническа чета по време на Старозагорското въстание през септември 1875 г. Четите се формират основно от български революционери доброволци, преминали от Румъния, и водят кратки сражения с османски войски, преди въстанието да бъде потушено.</td>\
+                    </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
@@ -721,6 +730,9 @@
             var popupContent = '<table>\
                     <tr>\
                         <td><b>Място:</b></td><td>' + (feature.properties['Място'] !== null ? autolinker.link(String(feature.properties['Място']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2" class="visible-with-data" id="Описание">' + (feature.properties['Описание'] ? autolinker.link(String(feature.properties['Описание']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
