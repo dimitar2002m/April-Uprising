@@ -761,6 +761,13 @@
         map.createPane('pane__11');
         map.getPane('pane__11').style.zIndex = 411;
         map.getPane('pane__11').style['mix-blend-mode'] = 'normal';
+        var oborishteIcon = L.divIcon({
+            className: 'oborishte-marker',
+            html: '<div style="width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 30%, #ffe28a, #d4a017);border:2px solid #7a4b00;box-shadow:0 0 6px rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;"><i class="fas fa-star" style="color:#5c3a00;font-size:14px;"></i></div>',
+            iconSize: [28, 28],
+            iconAnchor: [14, 14],
+            popupAnchor: [0, -14]
+        });
         var layer__11 = new L.geoJson(json__11, {
             attribution: '',
             interactive: true,
@@ -773,6 +780,13 @@
                     feature: feature,
                     variables: {}
                 };
+                if (feature.properties['Място'] === 'Оборище') {
+                    return L.marker(latlng, {
+                        pane: 'pane__11',
+                        icon: oborishteIcon,
+                        interactive: true,
+                    });
+                }
                 return L.circleMarker(latlng, style__11_0(feature));
             },
         });
