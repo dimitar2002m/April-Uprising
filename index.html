@@ -180,22 +180,6 @@
         });
         bounds_group.addLayer(layer__1);
         map.addLayer(layer__1);
-        function pop__2(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <th><b>Район, в който въстанието придобива масов характер</b></th>\
-                    </tr>\
-                    <tr>\
-                        <td>Част от територията на Четвъртия революционен окръг (Панагюрски), в която след избухването на въстанието в Копривщица на 20 април (2 май) 1876 г. се вдигат на борба и околните градове и села — сред тях Панагюрище, Перущица, Батак, Брацигово, Клисура и Стрелча.</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
         function style__2_0() {
             return {
                 pane: 'pane__2',
@@ -224,7 +208,6 @@
             dataVar: 'json__2',
             layerName: 'layer__2',
             pane: 'pane__2',
-            onEachFeature: pop__2,
             styles: [style__2_0,style__2_1,]
         });
         bounds_group.addLayer(layer__2);
