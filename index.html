@@ -54,18 +54,18 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
         <script src="data/ne_10m_admin_0_countriesshp_0.js"></script>
-        O83079821"></script>
-        O83079821"></script>
-        O83079821"></script>
-        O83079821"></script>
-        O83079821"></script>
-        O83079821"></script>
-        O83079821"></script>
-        O83079821"></script>
-        O83079821"></script>
-        O83079821"></script>
-        O83079821"></script>
-        O83079821"></script>
+        <script src="data/_1.js?v=1783080001"></script>
+        <script src="data/_2.js?v=1783080001"></script>
+        <script src="data/_3.js?v=1783080001"></script>
+        <script src="data/_4.js?v=1783080001"></script>
+        <script src="data/_5.js?v=1783080001"></script>
+        <script src="data/_6.js?v=1783080001"></script>
+        <script src="data/_7.js?v=1783080001"></script>
+        <script src="data/_8.js?v=1783080001"></script>
+        <script src="data/_9.js?v=1783080001"></script>
+        <script src="data/_10.js?v=1783080001"></script>
+        <script src="data/_11.js?v=1783080001"></script>
+        <script src="data/_12.js?v=1783080001"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
@@ -950,11 +950,6 @@
                 variables: {}
             };
             layer.bindTooltip((layer.feature.properties['Предв'] !== null?String('<div style="color: #069245; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['Предв']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css__10'});
-            labels.push(layer);
-            totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
         });
         var i = 0;
         layer__11.eachLayer(function(layer) {
@@ -993,15 +988,15 @@
                         });
                     }
                 }
-        resetLabels([layer__1,layer__3,layer__5,layer__8,layer__9,layer__10,layer__11,layer__12]);
+        resetLabels([layer__1,layer__3,layer__5,layer__8,layer__9,layer__11,layer__12]);
         map.on("zoomend", function(){
-            resetLabels([layer__1,layer__3,layer__5,layer__8,layer__9,layer__10,layer__11,layer__12]);
+            resetLabels([layer__1,layer__3,layer__5,layer__8,layer__9,layer__11,layer__12]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer__1,layer__3,layer__5,layer__8,layer__9,layer__10,layer__11,layer__12]);
+            resetLabels([layer__1,layer__3,layer__5,layer__8,layer__9,layer__11,layer__12]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer__1,layer__3,layer__5,layer__8,layer__9,layer__10,layer__11,layer__12]);
+            resetLabels([layer__1,layer__3,layer__5,layer__8,layer__9,layer__11,layer__12]);
         });
         </script>        
     </body>
