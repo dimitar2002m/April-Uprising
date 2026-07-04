@@ -281,7 +281,7 @@
             return {
                 pane: 'pane__4',
                 opacity: 1,
-                color: 'rgba(139,90,43,1.0)',
+                color: 'rgba(139,0,0,1.0)',
                 dashArray: '',
                 lineCap: 'round',
                 lineJoin: 'round',
@@ -304,6 +304,28 @@
         });
         bounds_group.addLayer(layer__4);
         map.addLayer(layer__4);
+        layer__4.eachLayer(function (layer) {
+            var latlngs = layer.getLatLngs();
+            var line = Array.isArray(latlngs[0]) ? latlngs[latlngs.length - 1] : latlngs;
+            if (!line || line.length < 2) { return; }
+            var p1 = line[line.length - 2];
+            var p2 = line[line.length - 1];
+            var bearing = (Math.atan2(p2.lng - p1.lng, p2.lat - p1.lat) * 180 / Math.PI + 360) % 360;
+            var ottomanArrowIcon = L.divIcon({
+                className: 'ottoman-arrow-icon',
+                html: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><polygon points="8,0 16,15 8,11 0,15" fill="#8B0000" stroke="#fff" stroke-width="0.6"/></svg>',
+                iconSize: [16, 16],
+                iconAnchor: [8, 8]
+            });
+            L.marker(p2, {
+                pane: 'pane__4',
+                icon: ottomanArrowIcon,
+                rotationAngle: bearing,
+                rotationOrigin: 'center center',
+                interactive: false,
+                keyboard: false
+            }).addTo(map);
+        });
         function pop__5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -874,7 +896,7 @@
             {label: '<img src="legend/_7.png" /> Действия на чета по време на Старозагорското въстание', layer: layer__7},
             {label: '<img src="legend/_6.png" /> Район на Старозагорско въстание', layer: layer__6},
             {label: '<img src="legend/_5.png" /> Седалище на БРЦК', layer: layer__5},
-            {label: '<img src="legend/_4.png" /> Действия на редовната и нередовната османска армия при поштушване на въстанието', layer: layer__4},
+            {label: '<svg width="26" height="14" style="vertical-align:middle;"><line x1="0" y1="7" x2="16" y2="7" stroke="#8B0000" stroke-width="2.5"/><polygon points="16,3 25,7 16,11" fill="#8B0000"/></svg> Действия на редовната и нередовната османска армия при потушаване на въстанието', layer: layer__4},
             {label: '<img src="legend/_3.png" /> Въстанало селище', layer: layer__3},
             {label: '<img src="legend/_2.png" /> Район, където въстанието придобива масов характер', layer: layer__2},
             {label: '<img src="legend/_1.png" /> Румъния', layer: layer__1},
