@@ -35,7 +35,27 @@
         .css__10::before {
             display: none;
         }
+        .district-number-label {
+            pointer-events: none;
+        }
+        .district-number-label-inner {
+            width: 19.2px;
+            height: 19.2px;
+            line-height: 19.2px;
+            border-radius: 50%;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-shadow:
+                -1px -1px 0 rgba(0,0,0,0.55),
+                1px -1px 0 rgba(0,0,0,0.55),
+                -1px 1px 0 rgba(0,0,0,0.55),
+                1px 1px 0 rgba(0,0,0,0.55);
+        }
         </style>
+
         <title>Априлското въстание: 150 години по-късно – Юбилейна карта</title>
     </head>
     <body>
@@ -706,6 +726,21 @@
                     variables: {}
                 };
                 return L.circleMarker(latlng, style__9_2(feature));
+            },function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, {
+                    pane: 'pane__9',
+                    interactive: false,
+                    icon: L.divIcon({
+                        className: 'district-number-label',
+                        html: '<div class="district-number-label-inner">' + String(feature.properties['номер']) + '</div>',
+                        iconSize: [19.2, 19.2],
+                        iconAnchor: [9.6, 9.6]
+                    })
+                });
             },
         ]});
         bounds_group.addLayer(layer__9);
@@ -714,6 +749,9 @@
             var popupContent = '<table>\
                     <tr>\
                         <td><b>Войвода:</b></td><td>' + (feature.properties['Предв'] !== null ? autolinker.link(String(feature.properties['Предв']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2" class="visible-with-data" id="Биография">' + (feature.properties['Биография'] ? autolinker.link(String(feature.properties['Биография']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
