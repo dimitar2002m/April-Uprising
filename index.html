@@ -519,7 +519,7 @@
                 dashArray: '',
                 lineCap: 'round',
                 lineJoin: 'round',
-                weight: isDanube ? 4.0 : 1.0,
+                weight: isDanube ? 7.0 : 1.0,
                 fillOpacity: 0,
                 interactive: true,
             }
@@ -748,7 +748,7 @@
         function pop__10(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td><b>Войвода:</b></td><td>' + (feature.properties['Предв'] !== null ? autolinker.link(String(feature.properties['Предв']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2" class="visible-with-data" id="Предв"><b>Войвода:</b> ' + (feature.properties['Предв'] !== null ? autolinker.link(String(feature.properties['Предв']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2" class="visible-with-data" id="Биография">' + (feature.properties['Биография'] ? autolinker.link(String(feature.properties['Биография']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -788,6 +788,29 @@
         });
         bounds_group.addLayer(layer__10);
         map.addLayer(layer__10);
+        layer__10.eachLayer(function (layer) {
+            if (!layer.feature || layer.feature.properties['route_id'] !== 'giurgiu_kozloduy') { return; }
+            var latlngs = layer.getLatLngs();
+            var line = Array.isArray(latlngs[0]) ? latlngs[latlngs.length - 1] : latlngs;
+            if (!line || line.length < 2) { return; }
+            var p1 = line[line.length - 2];
+            var p2 = line[line.length - 1];
+            var bearing = (Math.atan2(p2.lng - p1.lng, p2.lat - p1.lat) * 180 / Math.PI + 360) % 360;
+            var danubeRouteArrowIcon = L.divIcon({
+                className: 'danube-route-arrow-icon',
+                html: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><polygon points="8,0 16,15 8,11 0,15" fill="rgba(84,176,74,1.0)" stroke="#fff" stroke-width="0.6"/></svg>',
+                iconSize: [18, 18],
+                iconAnchor: [9, 9]
+            });
+            L.marker(p2, {
+                pane: 'pane__10',
+                icon: danubeRouteArrowIcon,
+                rotationAngle: bearing,
+                rotationOrigin: 'center center',
+                interactive: false,
+                keyboard: false
+            }).addTo(map);
+        });
         function pop__11(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
