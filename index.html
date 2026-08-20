@@ -87,8 +87,17 @@
         <script src="data/_11.js?v=1783080001"></script>
         <script src="data/_12.js?v=1783080001"></script>
         <script>
+        // Ограничаваме картата до Балканите (България, Гърция, Румъния, Османска империя / Турция и съседни)
+        var balkansBounds = L.latLngBounds(
+            [39.5, 19.0],   // югозапад
+            [48.5, 30.5]    // североизток
+        );
         var map = L.map('map', {
-            zoomControl:false, maxZoom:28, minZoom:1
+            zoomControl: false,
+            maxZoom: 28,
+            minZoom: 6,
+            maxBounds: balkansBounds,
+            maxBoundsViscosity: 1.0   // твърдо ограничение – не позволява излизане извън региона
         }).fitBounds([[41.20229976194209,23.131129857819044],[47.63703786682833,28.91463065083697]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
@@ -961,7 +970,7 @@
             {label: '<img src="legend/_3.png" /> Въстанало селище', layer: layer__3},
             {label: '<img src="legend/_2.png" /> Район, където въстанието придобива масов характер', layer: layer__2},
             {label: '<img src="legend/_1.png" /> Румъния', layer: layer__1},
-            {label: '<img src="legend/ne_10m_admin_0_countriesshp_0.png" /> ne_10m_admin_0_countries.shp', layer: layer_ne_10m_admin_0_countriesshp_0},]
+            {label: '<img src="legend/ne_10m_admin_0_countriesshp_0.png" /> Държави (Балкани)', layer: layer_ne_10m_admin_0_countriesshp_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
